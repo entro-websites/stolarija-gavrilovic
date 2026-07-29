@@ -204,7 +204,10 @@
   }
   .hero-content{
     position:relative;
-    max-width:680px;
+    max-width:760px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
   }
   .hero-content h1{
     font-size:48px;
@@ -213,11 +216,36 @@
   @media (max-width:768px){
     .hero-content h1{font-size:32px;}
   }
-  .hero-content .lead{font-size:19px;margin-bottom:28px;}
+  .hero-content .lead{
+    font-size:19px;
+    margin-bottom:28px;
+    margin-left:auto;
+    margin-right:auto;
+  }
   .hero-note{
     margin-top:14px;
     font-size:14px;
     color:var(--muted);
+  }
+  .hero-image{
+    position:relative;
+    max-width:1040px;
+    margin-top:48px;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid var(--border);
+    background:#e9e2d9;
+  }
+  .hero-image img{
+    width:100%;
+    height:480px;
+    object-fit:cover;
+  }
+  @media (max-width:768px){
+    .hero-image{margin-top:32px;border-radius:8px;}
+    .hero-image img{height:260px;}
   }
 
   /* CARDS - USLUGE */
@@ -298,31 +326,54 @@
   .about-text p:first-of-type{color:var(--text);}
 
   /* MATERIJALI */
-  .materials-list{
+  .materials-grid{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:0;
-    margin-top:40px;
-    border-top:1px solid var(--border);
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap:24px;
+    margin-top:48px;
   }
-  @media (max-width:768px){
-    .materials-list{grid-template-columns:1fr;}
+  .material-card{
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-top:3px solid var(--primary);
+    border-radius:8px;
+    padding-top:28px;
+    padding-bottom:28px;
+    padding-left:24px;
+    padding-right:24px;
   }
-  .material-row{
-    padding-top:24px;
-    padding-bottom:24px;
-    padding-left:8px;
-    padding-right:32px;
-    border-bottom:1px solid var(--border);
+  .material-card h3{
+    font-size:18px;
+    margin-bottom:8px;
   }
-  .material-row h3{
-    font-size:17px;
-    margin-bottom:6px;
-  }
-  .material-row p{
+  .material-card > p{
     color:var(--muted);
     font-size:15px;
-    margin-bottom:0;
+    margin-bottom:16px;
+  }
+  .material-bullets{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .material-bullets li{
+    position:relative;
+    padding-left:24px;
+    padding-bottom:10px;
+    color:var(--muted);
+    font-size:15px;
+    line-height:1.5;
+  }
+  .material-bullets li:last-child{padding-bottom:0;}
+  .material-bullets li::before{
+    content:"";
+    position:absolute;
+    left:2px;
+    top:9px;
+    width:8px;
+    height:8px;
+    border-radius:2px;
+    background:var(--primary);
   }
 
   /* KAKO RADIMO */
@@ -502,6 +553,10 @@
         <a href="#kontakt" class="btn btn-primary">Zakažite besplatnu procenu</a>
         <p class="hero-note">Odgovaramo na poziv i poruku isti dan.</p>
       </div>
+
+      <div class="hero-image">
+        <img src="assets/namestaj-po-meri-stolarija-gavrilovi-.png" alt="Kuhinja po meri izrađena u radionici Stolarije Gavrilović">
+      </div>
     </div>
   </section>
 
@@ -582,22 +637,45 @@
       <h2>Materijali za nameštaj</h2>
       <p class="lead">Izbor materijala zavisi od prostorije i budžeta. Evo šta najčešće koristimo.</p>
 
-      <div class="materials-list">
-        <div class="material-row">
-          <h3>Masivno drvo (hrast, bukva, bor)</h3>
-          <p>Za komade koji treba da traju decenijama - trpezarijski stolovi, radne ploče, spavaće sobe.</p>
+      <div class="materials-grid">
+        <div class="material-card">
+          <h3>Masivno drvo</h3>
+          <p>Hrast, bukva i bor - za komade koji treba da traju decenijama.</p>
+          <ul class="material-bullets">
+            <li>Trpezarijski stolovi i radne ploče</li>
+            <li>Spavaće sobe i vidljivi noseći elementi</li>
+            <li>Može ponovo da se brusi i lakira posle godina korišćenja</li>
+          </ul>
         </div>
-        <div class="material-row">
+
+        <div class="material-card">
           <h3>Iverica sa furnirom</h3>
-          <p>Najčešći izbor za kuhinje i plakare. Dobar odnos cene i izdržljivosti, veliki izbor dezena.</p>
+          <p>Najčešći izbor kad se gleda i cena i izdržljivost.</p>
+          <ul class="material-bullets">
+            <li>Kuhinjski elementi, plakari i police</li>
+            <li>Veliki izbor dezena i boja</li>
+            <li>Kantovanje ivica da ploča ne upija vlagu</li>
+          </ul>
         </div>
-        <div class="material-row">
+
+        <div class="material-card">
           <h3>MDF</h3>
-          <p>Za vrata sa frezovanjem i lakirane površine, kad tražite glatak, moderan izgled.</p>
+          <p>Kad tražite glatak, moderan izgled bez vidljive strukture drveta.</p>
+          <ul class="material-bullets">
+            <li>Vrata sa frezovanjem i profilisane fronte</li>
+            <li>Lakirane površine u boji po izboru</li>
+            <li>Ravna površina bez spojeva i čvorova</li>
+          </ul>
         </div>
-        <div class="material-row">
+
+        <div class="material-card">
           <h3>Kovano gvožđe i čelik</h3>
-          <p>Za nogare stolova, ograde na nadstrešnicama i ojačanja konstrukcije kod brvnara.</p>
+          <p>Metal koji kombinujemo sa drvetom tamo gde treba nosivost.</p>
+          <ul class="material-bullets">
+            <li>Nogare za stolove i konzole za police</li>
+            <li>Ograde na nadstrešnicama i terasama</li>
+            <li>Ojačanja konstrukcije kod brvnara</li>
+          </ul>
         </div>
       </div>
     </div>

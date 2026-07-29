@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stolarija Gavrilović - Nameštaj po meri, Beograd</title>
+<meta name="description" content="Stolarija Gavrilović pravi nameštaj po meri, nadstrešnice, brvnare i nameštaj od paleta u Beogradu. Merimo prostor kod vas i radimo po nacrtu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#6f4e37;
+    --primary-dark:#573e2b;
+    --text:#2b2622;
+    --muted:#6b6259;
+    --bg:#faf8f6;
+    --card-bg:#ffffff;
+    --border:#e4dcd3;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Open Sans', sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    font-size:16px;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  h1,h2,h3{
+    font-family:'Poppins', sans-serif;
+    color:var(--text);
+    font-weight:600;
+    margin:0 0 16px 0;
+    line-height:1.25;
+  }
+  p{margin:0 0 16px 0;color:var(--text);}
+  a{color:inherit;}
+  section[id]{scroll-margin-top:90px;}
+
+  .wrap{
+    max-width:1280px;
+    margin:0 auto;
+    padding-left:24px;
+    padding-right:24px;
+  }
+  @media (max-width:768px){
+    .wrap{padding-left:20px;padding-right:20px;}
+  }
+
+  .section{
+    padding-top:96px;
+    padding-bottom:96px;
+  }
+  @media (max-width:768px){
+    .section{padding-top:56px;padding-bottom:56px;}
+  }
+
+  .section-alt{background:#f4efe9;}
+
+  .eyebrow{
+    color:var(--primary);
+    font-family:'Poppins', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    margin-bottom:8px;
+    display:block;
+  }
+
+  .lead{
+    max-width:640px;
+    color:var(--muted);
+    font-size:18px;
+  }
+
+  .btn{
+    display:inline-block;
+    padding:14px 28px;
+    border-radius:8px;
+    font-family:'Poppins', sans-serif;
+    font-weight:600;
+    font-size:16px;
+    text-decoration:none;
+    border:1px solid transparent;
+    cursor:pointer;
+  }
+  .btn-primary{
+    background:var(--primary);
+    color:#fff;
+  }
+  .btn-primary:hover{background:var(--primary-dark);}
+
+  /* NAVBAR */
+  .navbar{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+  }
+  .navbar-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-top:14px;
+    padding-bottom:14px;
+    position:relative;
+  }
+  .logo{text-decoration:none;display:flex;align-items:center;}
+  .logo img{height:38px;width:auto;}
+
+  .menu-toggle{display:none;}
+  .hamburger{
+    display:none;
+    flex-direction:column;
+    justify-content:space-between;
+    width:26px;
+    height:18px;
+    cursor:pointer;
+    background:none;
+    border:none;
+    padding:0;
+  }
+  .hamburger span{
+    display:block;
+    height:2px;
+    width:100%;
+    background:var(--primary);
+    border-radius:2px;
+  }
+
+  .nav-menu{
+    display:flex;
+    align-items:center;
+    gap:28px;
+  }
+  .nav-menu a{
+    color:var(--text);
+    text-decoration:none;
+    font-family:'Poppins', sans-serif;
+    font-weight:600;
+    font-size:15px;
+  }
+  .nav-menu a:hover{color:var(--primary);}
+  .nav-menu .btn-primary{color:#fff;}
+
+  @media (max-width:991px){
+    .hamburger{display:flex;}
+    .nav-menu{
+      display:none;
+      position:absolute;
+      top:100%;
+      left:0;
+      right:0;
+      background:#fff;
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      flex-direction:column;
+      align-items:stretch;
+      gap:0;
+      padding-top:8px;
+      padding-bottom:8px;
+    }
+    .nav-menu a{
+      padding-top:14px;
+      padding-bottom:14px;
+      padding-left:24px;
+      padding-right:24px;
+      border-bottom:1px solid var(--border);
+    }
+    .nav-menu a:last-child{border-bottom:none;}
+    .nav-menu .btn-primary{
+      margin:14px 24px 6px 24px;
+      text-align:center;
+      border-bottom:none;
+    }
+    .menu-toggle:checked ~ .nav-menu{display:flex;}
+  }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    padding-top:88px;
+    padding-bottom:88px;
+    overflow:hidden;
+  }
+  @media (max-width:768px){
+    .hero{padding-top:56px;padding-bottom:56px;}
+  }
+  .hero-deco{
+    position:absolute;
+    top:-40px;
+    right:-60px;
+    width:420px;
+    height:420px;
+    opacity:0.08;
+    pointer-events:none;
+  }
+  .hero-content{
+    position:relative;
+    max-width:680px;
+  }
+  .hero-content h1{
+    font-size:48px;
+    letter-spacing:-0.01em;
+  }
+  @media (max-width:768px){
+    .hero-content h1{font-size:32px;}
+  }
+  .hero-content .lead{font-size:19px;margin-bottom:28px;}
+  .hero-note{
+    margin-top:14px;
+    font-size:14px;
+    color:var(--muted);
+  }
+
+  /* CARDS - USLUGE */
+  .cards-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:32px;
+    margin-top:48px;
+  }
+  .card{
+    border:1px solid var(--border);
+    border-radius:8px;
+    background:var(--card-bg);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+  .card-image{
+    width:100%;
+    height:200px;
+    overflow:hidden;
+    background:#e9e2d9;
+  }
+  .card-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .card-body{
+    padding:24px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+  }
+  .card-body h3{font-size:20px;margin-bottom:10px;}
+  .card-body p{color:var(--muted);font-size:15px;flex:1;}
+  .card-link{
+    margin-top:12px;
+    font-family:'Poppins', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    color:var(--primary);
+    text-decoration:none;
+  }
+  .card-link:hover{text-decoration:underline;}
+
+  /* O NAMA */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    align-items:center;
+  }
+  @media (max-width:900px){
+    .about-grid{grid-template-columns:1fr;}
+  }
+  .placeholder-block{
+    width:100%;
+    min-height:280px;
+    background:#e6ded4;
+    border:1px solid var(--border);
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--muted);
+    font-family:'Poppins', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:0.04em;
+    text-align:center;
+    padding-top:20px;
+    padding-bottom:20px;
+    padding-left:20px;
+    padding-right:20px;
+  }
+  .about-text p{color:var(--muted);}
+  .about-text p:first-of-type{color:var(--text);}
+
+  /* MATERIJALI */
+  .materials-list{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    margin-top:40px;
+    border-top:1px solid var(--border);
+  }
+  @media (max-width:768px){
+    .materials-list{grid-template-columns:1fr;}
+  }
+  .material-row{
+    padding-top:24px;
+    padding-bottom:24px;
+    padding-left:8px;
+    padding-right:32px;
+    border-bottom:1px solid var(--border);
+  }
+  .material-row h3{
+    font-size:17px;
+    margin-bottom:6px;
+  }
+  .material-row p{
+    color:var(--muted);
+    font-size:15px;
+    margin-bottom:0;
+  }
+
+  /* KAKO RADIMO */
+  .steps-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:40px;
+    margin-top:48px;
+  }
+  @media (max-width:900px){
+    .steps-grid{grid-template-columns:1fr;}
+  }
+  .step{
+    text-align:left;
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:28px;
+    background:var(--card-bg);
+  }
+  .step-icon{
+    width:44px;
+    height:44px;
+    margin-bottom:18px;
+  }
+  .step h3{font-size:18px;margin-bottom:8px;}
+  .step p{color:var(--muted);font-size:15px;margin-bottom:0;}
+
+  /* KONTAKT */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:48px;
+    margin-top:40px;
+    align-items:start;
+  }
+  @media (max-width:900px){
+    .contact-grid{grid-template-columns:1fr;}
+  }
+  .form-field{margin-bottom:20px;}
+  .form-field label{
+    display:block;
+    font-family:'Poppins', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    margin-bottom:6px;
+  }
+  .form-field input,
+  .form-field textarea{
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:12px 14px;
+    font-family:'Open Sans', sans-serif;
+    font-size:15px;
+    color:var(--text);
+    background:#fff;
+  }
+  .form-field textarea{min-height:140px;resize:vertical;}
+  .form-field input:focus,
+  .form-field textarea:focus{
+    outline:none;
+    border-color:var(--primary);
+  }
+
+  .contact-info{
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:28px;
+    background:var(--card-bg);
+  }
+  .contact-info h3{font-size:18px;margin-bottom:16px;}
+  .contact-info .info-row{
+    margin-bottom:14px;
+    font-size:15px;
+  }
+  .contact-info .info-row strong{
+    display:block;
+    font-family:'Poppins', sans-serif;
+    font-size:13px;
+    color:var(--muted);
+    font-weight:600;
+    margin-bottom:2px;
+  }
+  .map-placeholder{
+    margin-top:20px;
+    min-height:200px;
+    background:#e6ded4;
+    border:1px solid var(--border);
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:var(--muted);
+    font-family:'Poppins', sans-serif;
+    font-weight:600;
+    font-size:13px;
+    letter-spacing:0.04em;
+    padding-top:16px;
+    padding-bottom:16px;
+    padding-left:16px;
+    padding-right:16px;
+  }
+
+  /* FOOTER */
+  .footer{
+    background:#251f1a;
+    color:#d9d0c6;
+    padding-top:64px;
+    padding-bottom:0;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr 1fr;
+    gap:48px;
+    padding-bottom:48px;
+  }
+  @media (max-width:768px){
+    .footer-grid{grid-template-columns:1fr;gap:36px;}
+  }
+  .footer-logo img{height:32px;margin-bottom:16px;}
+  .footer p{color:#b6ab9d;font-size:14px;}
+  .footer h4{
+    font-family:'Poppins', sans-serif;
+    color:#fff;
+    font-size:15px;
+    margin-bottom:16px;
+  }
+  .footer ul{list-style:none;margin:0;padding:0;}
+  .footer ul li{margin-bottom:10px;}
+  .footer ul li a{
+    color:#d9d0c6;
+    text-decoration:none;
+    font-size:14px;
+  }
+  .footer ul li a:hover{color:#fff;}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.12);
+    padding-top:20px;
+    padding-bottom:20px;
+    text-align:center;
+    font-size:13px;
+    color:#9a8f81;
+  }
+</style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="wrap navbar-inner">
+      <a href="#" class="logo">
+        <img src="assets/logo.png" alt="Stolarija Gavrilović logo">
+      </a>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="hamburger" aria-label="Otvori meni">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="nav-menu">
+        <a href="#usluge">Usluge</a>
+        <a href="#o-nama">O nama</a>
+        <a href="#materijali">Materijali</a>
+        <a href="#kako-radimo">Kako radimo</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="#kontakt" class="btn btn-primary">Pošaljite upit</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <img src="assets/empty-GT_imagea-1-.png" alt="" class="hero-deco">
+    <div class="wrap">
+      <div class="hero-content">
+        <h1>Nameštaj po meri, napravljen tačno za vaš prostor</h1>
+        <p class="lead">Radimo kuhinje, dnevne i spavaće sobe, kupatila i plakare u Beogradu. Izmerimo prostor kod vas, napravimo nacrt i isteršemo nameštaj u radionici, komad po komad.</p>
+        <a href="#kontakt" class="btn btn-primary">Zakažite besplatnu procenu</a>
+        <p class="hero-note">Odgovaramo na poziv i poruku isti dan.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="usluge">
+    <div class="wrap">
+      <span class="eyebrow">Usluge</span>
+      <h2>Šta radimo</h2>
+      <p class="lead">Od kuhinje do nadstrešnice u dvorištu - sve pravimo po meri, ne po katalogu.</p>
+
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-image">
+            <img src="assets/namestaj-po-meri-stolarija-gavrilovi-.png" alt="Kuhinja po meri sa tamnim elementima i belom radnom pločom">
+          </div>
+          <div class="card-body">
+            <h3>Nameštaj po meri</h3>
+            <p>Kuhinje, dnevne i spavaće sobe, dečje sobe, kupatila, predsoblja i nameštaj za kancelarije i lokale. Merimo prostor kod vas i pravimo nacrt pre nego što isečemo prvu ploču.</p>
+            <a href="#kontakt" class="card-link">Pošaljite upit za ovo</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-image">
+            <img src="assets/nadstresnice-letnjikovci-vidikovci-stolarija-gavrilovi-.png" alt="Drvena nadstrešnica sa sedištem u dvorištu, obložena šindrom">
+          </div>
+          <div class="card-body">
+            <h3>Nadstrešnice i letnjikovci</h3>
+            <p>Nadstrešnice za terase, letnjikovci i vidikovci od drveta, rađeni da izdrže kišu i sneg. Dodajemo krov, stubove i osvetljenje po dogovoru.</p>
+            <a href="#kontakt" class="card-link">Pošaljite upit za ovo</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-image">
+            <img src="assets/namestaj-od-paleta-stolarija-gavrilovi-.png" alt="Baštenski set od paleta - ugaona garnitura i sto, obojeno u belo">
+          </div>
+          <div class="card-body">
+            <h3>Nameštaj od paleta</h3>
+            <p>Sto, klupa ili ceo ugaoni set od paleta, brušen i lakiran da izdrži spolja. Dobro rešenje za terasu ili baštu kad ne treba ceo budžet za nameštaj.</p>
+            <a href="#kontakt" class="card-link">Pošaljite upit za ovo</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-image">
+            <img src="assets/brvnare-montazne-kuce.png" alt="Drvena brvnara sa natkrivenim tremom i ogradom">
+          </div>
+          <div class="card-body">
+            <h3>Brvnare i montažne kuće</h3>
+            <p>Brvnare i montažne kuće od drveta, za vikendicu, gostinsku kućicu u dvorištu ili stalno stanovanje. Radimo konstrukciju, oblaganje i terasu.</p>
+            <a href="#kontakt" class="card-link">Pošaljite upit za ovo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="o-nama">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-text">
+          <span class="eyebrow">O nama</span>
+          <h2>Ko smo mi</h2>
+          <p>Stolarija Gavrilović pravi nameštaj i drvene konstrukcije u Beogradu. Ne prodajemo gotove komade iz kataloga - dođemo kod vas, izmerimo prostor i napravimo nacrt koji odgovara baš toj sobi.</p>
+          <p>Radimo sa masivnim drvetom, iverom, MDF-om i furniranim pločama. Za kuhinju predložimo materijal koji podnosi vlagu i toplotu, za plakar u dečjoj sobi nešto drugo.</p>
+          <p>Kad nam neko donese fotografiju kuhinje iz časopisa, sednemo i pogledamo šta od toga stvarno stane u te kvadrate i taj budžet. Nacrt pravimo na osnovu prostora, ne na osnovu slike.</p>
+        </div>
+        <div class="placeholder-block" role="img" aria-label="Fotografija radionice Stolarije Gavrilović">
+          FOTOGRAFIJA RADIONICE
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="materijali">
+    <div class="wrap">
+      <span class="eyebrow">Materijali</span>
+      <h2>Materijali za nameštaj</h2>
+      <p class="lead">Izbor materijala zavisi od prostorije i budžeta. Evo šta najčešće koristimo.</p>
+
+      <div class="materials-list">
+        <div class="material-row">
+          <h3>Masivno drvo (hrast, bukva, bor)</h3>
+          <p>Za komade koji treba da traju decenijama - trpezarijski stolovi, radne ploče, spavaće sobe.</p>
+        </div>
+        <div class="material-row">
+          <h3>Iverica sa furnirom</h3>
+          <p>Najčešći izbor za kuhinje i plakare. Dobar odnos cene i izdržljivosti, veliki izbor dezena.</p>
+        </div>
+        <div class="material-row">
+          <h3>MDF</h3>
+          <p>Za vrata sa frezovanjem i lakirane površine, kad tražite glatak, moderan izgled.</p>
+        </div>
+        <div class="material-row">
+          <h3>Kovano gvožđe i čelik</h3>
+          <p>Za nogare stolova, ograde na nadstrešnicama i ojačanja konstrukcije kod brvnara.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="kako-radimo">
+    <div class="wrap">
+      <span class="eyebrow">Proces</span>
+      <h2>Kako radimo</h2>
+      <p class="lead">Tri koraka, bez iznenađenja u ceni i bez čekanja da saznate kad stiže vaš nameštaj.</p>
+
+      <div class="steps-grid">
+        <div class="step">
+          <img src="assets/ico-money.png" alt="" class="step-icon">
+          <h3>Merimo i dogovaramo cenu</h3>
+          <p>Dolazimo kod vas, merimo prostor i pričamo o tome šta vam treba. Cenu kažemo unapred, pre nego što potpišete bilo šta.</p>
+        </div>
+        <div class="step">
+          <img src="assets/ico-bank.png" alt="" class="step-icon">
+          <h3>Pravimo nacrt i ugovor</h3>
+          <p>Nacrtamo tačno kako će nameštaj da izgleda i stane u prostor. Dogovorimo rok isporuke i avans, sve pismeno.</p>
+        </div>
+        <div class="step">
+          <img src="assets/ico-invest.png" alt="" class="step-icon">
+          <h3>Isporučujemo i montiramo</h3>
+          <p>Donesemo gotov nameštaj, montiramo ga kod vas i pokupimo ambalažu za sobom. Proverite sve pre nego što odemo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="kontakt">
+    <div class="wrap">
+      <span class="eyebrow">Kontakt</span>
+      <h2>Pošaljite upit</h2>
+      <p class="lead">Recite nam šta vam treba i gde ste u Beogradu. Javljamo se telefonom ili porukom da dogovorimo izlazak na teren.</p>
+
+      <div class="contact-grid">
+        <form>
+          <div class="form-field">
+            <label for="ime">Ime i prezime</label>
+            <input type="text" id="ime" name="ime" placeholder="Vaše ime i prezime">
+          </div>
+          <div class="form-field">
+            <label for="telefon">Telefon</label>
+            <input type="tel" id="telefon" name="telefon" placeholder="06X XXX XXXX">
+          </div>
+          <div class="form-field">
+            <label for="email">Email (opciono)</label>
+            <input type="email" id="email" name="email" placeholder="vasa@email.com">
+          </div>
+          <div class="form-field">
+            <label for="poruka">Poruka</label>
+            <textarea id="poruka" name="poruka" placeholder="Opišite prostor i šta vam treba - na primer kuhinja 3x2m, potreban nacrt i cena."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Pošaljite upit</button>
+        </form>
+
+        <div class="contact-info">
+          <h3>Podaci za kontakt</h3>
+          <div class="info-row">
+            <strong>Telefon</strong>
+            060 350 22 11
+          </div>
+          <div class="info-row">
+            <strong>Email</strong>
+            info@stolarija-gavrilovic.com
+          </div>
+          <div class="info-row">
+            <strong>Radionica</strong>
+            Zrenjaninski put bb, Beograd
+          </div>
+          <div class="info-row">
+            <strong>Radno vreme</strong>
+            Pon-Pet: 08-16h, Subota: 08-13h
+          </div>
+          <div class="map-placeholder" role="img" aria-label="Mapa lokacije radionice u Beogradu">
+            MAPA LOKACIJE - BEOGRAD
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-logo">
+          <img src="assets/sg-logo-240_y3pe1kom.png" alt="Stolarija Gavrilović logo">
+          <p>Nameštaj i drvene konstrukcije po meri, iz Beograda.</p>
+        </div>
+        <div>
+          <h4>Stranica</h4>
+          <ul>
+            <li><a href="#usluge">Usluge</a></li>
+            <li><a href="#o-nama">O nama</a></li>
+            <li><a href="#materijali">Materijali</a></li>
+            <li><a href="#kako-radimo">Kako radimo</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Kontakt</h4>
+          <ul>
+            <li><a href="tel:0603502211">060 350 22 11</a></li>
+            <li><a href="mailto:info@stolarija-gavrilovic.com">info@stolarija-gavrilovic.com</a></li>
+            <li><a href="#kontakt">Zrenjaninski put bb, Beograd</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2024 Stolarija Gavrilović. Sva prava zadržana.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -7,7 +7,7 @@
 <meta name="description" content="Stolarija Gavrilović pravi nameštaj po meri, nadstrešnice, brvnare i nameštaj od paleta u Beogradu. Merimo prostor kod vas i radimo po nacrtu.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --primary:#26beef;
@@ -18,26 +18,37 @@
     --bg:#f7fafc;
     --card-bg:#ffffff;
     --border:#dbe4ea;
+    --sq-line:rgba(10,110,144,0.07);
+    --sq-dot:rgba(10,110,144,0.13);
   }
 
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    font-family:'Open Sans', sans-serif;
+    font-family:'Space Grotesk', sans-serif;
     color:var(--text);
-    background:var(--bg);
+    background-color:var(--bg);
+    background-image:
+      linear-gradient(var(--sq-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--sq-line) 1px, transparent 1px);
+    background-size:32px 32px;
     font-size:16px;
     line-height:1.65;
     overflow-x:hidden;
   }
   img{max-width:100%;display:block;}
   h1,h2,h3{
-    font-family:'Poppins', sans-serif;
+    font-family:'Instrument Serif', serif;
     color:var(--text);
-    font-weight:600;
+    font-weight:400;
     margin:0 0 16px 0;
-    line-height:1.25;
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+  h2{font-size:40px;margin-bottom:20px;}
+  @media (max-width:768px){
+    h2{font-size:32px;}
   }
   p{margin:0 0 16px 0;color:var(--text);}
   a{color:inherit;}
@@ -61,11 +72,15 @@
     .section{padding-top:56px;padding-bottom:56px;}
   }
 
-  .section-alt{background:#eaf4fa;}
+  .section-alt{
+    background-color:var(--bg);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect x='0' y='0' width='4' height='4' fill='%230a6e90' fill-opacity='0.13'/%3E%3C/svg%3E");
+    background-size:32px 32px;
+  }
 
   .eyebrow{
     color:var(--primary-ink);
-    font-family:'Poppins', sans-serif;
+    font-family:'Space Grotesk', sans-serif;
     font-weight:600;
     font-size:14px;
     letter-spacing:0.06em;
@@ -84,7 +99,7 @@
     display:inline-block;
     padding:14px 28px;
     border-radius:8px;
-    font-family:'Poppins', sans-serif;
+    font-family:'Space Grotesk', sans-serif;
     font-weight:600;
     font-size:16px;
     text-decoration:none;
@@ -144,7 +159,7 @@
   .nav-menu a{
     color:var(--text);
     text-decoration:none;
-    font-family:'Poppins', sans-serif;
+    font-family:'Space Grotesk', sans-serif;
     font-weight:600;
     font-size:15px;
   }
@@ -187,66 +202,121 @@
   /* HERO */
   .hero{
     position:relative;
-    padding-top:88px;
-    padding-bottom:88px;
+    padding-top:96px;
+    padding-bottom:96px;
     overflow:hidden;
   }
   @media (max-width:768px){
     .hero{padding-top:56px;padding-bottom:56px;}
   }
-  .hero-deco{
-    position:absolute;
-    top:-40px;
-    right:-60px;
-    width:420px;
-    height:420px;
-    opacity:0.08;
-    pointer-events:none;
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+    align-items:center;
   }
-  .hero-content{
-    position:relative;
-    max-width:760px;
-    margin-left:auto;
-    margin-right:auto;
-    text-align:center;
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;}
   }
-  .hero-content h1{
-    font-size:48px;
-    letter-spacing:-0.01em;
+  .hero-copy h1{
+    font-size:64px;
+    margin-bottom:24px;
+  }
+  @media (max-width:1100px){
+    .hero-copy h1{font-size:52px;}
   }
   @media (max-width:768px){
-    .hero-content h1{font-size:32px;}
+    .hero-copy h1{font-size:40px;}
   }
-  .hero-content .lead{
-    font-size:19px;
-    margin-bottom:28px;
-    margin-left:auto;
-    margin-right:auto;
+  .hero-copy .lead{
+    font-size:20px;
+    margin-bottom:32px;
   }
   .hero-note{
-    margin-top:14px;
+    margin-top:16px;
+    margin-bottom:0;
     font-size:14px;
     color:var(--muted);
   }
-  .hero-image{
+
+  .hero-visual{
     position:relative;
-    max-width:1040px;
-    margin-top:48px;
+    padding:16px;
+  }
+  .hero-circle{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:520px;
     margin-left:auto;
     margin-right:auto;
-    border-radius:12px;
+    aspect-ratio:1 / 1;
+    border-radius:50%;
     overflow:hidden;
-    border:1px solid var(--border);
+    border:8px solid var(--card-bg);
     background:#dbeaf3;
   }
-  .hero-image img{
+  .hero-circle img{
     width:100%;
-    height:480px;
+    height:100%;
     object-fit:cover;
   }
-  @media (max-width:768px){
-    .hero-image{margin-top:32px;border-radius:8px;}
-    .hero-image img{height:260px;}
+  .hero-sq{
+    position:absolute;
+    display:block;
+    background:var(--primary);
+    border-radius:4px;
+    pointer-events:none;
+  }
+  .hero-sq-1{width:24px;height:24px;top:0;left:8px;opacity:0.40;transform:rotate(16deg);}
+  .hero-sq-2{width:16px;height:16px;top:64px;right:16px;opacity:0.55;}
+  .hero-sq-3{width:32px;height:32px;bottom:32px;left:0;opacity:0.24;transform:rotate(-14deg);}
+  .hero-sq-4{width:12px;height:12px;bottom:96px;right:8px;opacity:0.60;transform:rotate(24deg);}
+
+  .hero-features{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+    margin-top:64px;
+    padding:24px;
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:16px;
+  }
+  @media (max-width:900px){
+    .hero-features{grid-template-columns:1fr;gap:20px;margin-top:40px;}
+  }
+  .hero-feature{
+    display:flex;
+    align-items:flex-start;
+    gap:16px;
+    padding-left:24px;
+    border-left:1px solid var(--border);
+  }
+  .hero-feature:first-child{
+    padding-left:0;
+    border-left:none;
+  }
+  @media (max-width:900px){
+    .hero-feature{padding-left:0;border-left:none;}
+  }
+  .hero-feature img{
+    width:40px;
+    height:40px;
+    flex:none;
+  }
+  .hero-feature h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:16px;
+    line-height:1.4;
+    margin-bottom:4px;
+  }
+  .hero-feature p{
+    font-size:14px;
+    color:var(--muted);
+    margin-bottom:0;
+    line-height:1.5;
   }
 
   /* CARDS - USLUGE */
@@ -285,7 +355,7 @@
   .card-body p{color:var(--muted);font-size:15px;flex:1;}
   .card-link{
     margin-top:12px;
-    font-family:'Poppins', sans-serif;
+    font-family:'Space Grotesk', sans-serif;
     font-weight:600;
     font-size:14px;
     color:var(--primary-ink);
@@ -313,7 +383,7 @@
     align-items:center;
     justify-content:center;
     color:var(--muted);
-    font-family:'Poppins', sans-serif;
+    font-family:'Space Grotesk', sans-serif;
     font-weight:600;
     font-size:14px;
     letter-spacing:0.04em;
@@ -416,7 +486,7 @@
   .form-field{margin-bottom:20px;}
   .form-field label{
     display:block;
-    font-family:'Poppins', sans-serif;
+    font-family:'Space Grotesk', sans-serif;
     font-weight:600;
     font-size:14px;
     margin-bottom:6px;
@@ -427,7 +497,7 @@
     border:1px solid var(--border);
     border-radius:8px;
     padding:12px 14px;
-    font-family:'Open Sans', sans-serif;
+    font-family:'Space Grotesk', sans-serif;
     font-size:15px;
     color:var(--text);
     background:#fff;
@@ -452,7 +522,7 @@
   }
   .contact-info .info-row strong{
     display:block;
-    font-family:'Poppins', sans-serif;
+    font-family:'Space Grotesk', sans-serif;
     font-size:13px;
     color:var(--muted);
     font-weight:600;
@@ -469,7 +539,7 @@
     justify-content:center;
     text-align:center;
     color:var(--muted);
-    font-family:'Poppins', sans-serif;
+    font-family:'Space Grotesk', sans-serif;
     font-weight:600;
     font-size:13px;
     letter-spacing:0.04em;
@@ -498,7 +568,7 @@
   .footer-logo img{height:32px;margin-bottom:16px;}
   .footer p{color:#95a9b5;font-size:14px;}
   .footer h4{
-    font-family:'Poppins', sans-serif;
+    font-family:'Space Grotesk', sans-serif;
     color:#fff;
     font-size:15px;
     margin-bottom:16px;
@@ -546,17 +616,48 @@
   </header>
 
   <section class="hero">
-    <img src="assets/empty-GT_imagea-1-.png" alt="" class="hero-deco">
     <div class="wrap">
-      <div class="hero-content">
-        <h1>Nameštaj po meri, napravljen tačno za vaš prostor</h1>
-        <p class="lead">Radimo kuhinje, dnevne i spavaće sobe, kupatila i plakare u Beogradu. Izmerimo prostor kod vas, napravimo nacrt i isteršemo nameštaj u radionici, komad po komad.</p>
-        <a href="#kontakt" class="btn btn-primary">Zakažite besplatnu procenu</a>
-        <p class="hero-note">Odgovaramo na poziv i poruku isti dan.</p>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1>Nameštaj po meri, napravljen tačno za vaš prostor</h1>
+          <p class="lead">Radimo kuhinje, dnevne i spavaće sobe, kupatila i plakare u Beogradu. Izmerimo prostor kod vas, napravimo nacrt i isteršemo nameštaj u radionici, komad po komad.</p>
+          <a href="#kontakt" class="btn btn-primary">Zakažite besplatnu procenu</a>
+          <p class="hero-note">Odgovaramo na poziv i poruku isti dan.</p>
+        </div>
+
+        <div class="hero-visual">
+          <span class="hero-sq hero-sq-1"></span>
+          <span class="hero-sq hero-sq-2"></span>
+          <span class="hero-sq hero-sq-3"></span>
+          <span class="hero-sq hero-sq-4"></span>
+          <div class="hero-circle">
+            <img src="assets/namestaj-po-meri-stolarija-gavrilovi-.png" alt="Kuhinja po meri izrađena u radionici Stolarije Gavrilović">
+          </div>
+        </div>
       </div>
 
-      <div class="hero-image">
-        <img src="assets/namestaj-po-meri-stolarija-gavrilovi-.png" alt="Kuhinja po meri izrađena u radionici Stolarije Gavrilović">
+      <div class="hero-features">
+        <div class="hero-feature">
+          <img src="assets/ico-money.png" alt="">
+          <div>
+            <h3>Merimo kod vas</h3>
+            <p>Izlazimo na teren i pravimo nacrt po vašem prostoru.</p>
+          </div>
+        </div>
+        <div class="hero-feature">
+          <img src="assets/ico-bank.png" alt="">
+          <div>
+            <h3>Cena unapred</h3>
+            <p>Rok i cenu dogovorimo pismeno, pre početka radova.</p>
+          </div>
+        </div>
+        <div class="hero-feature">
+          <img src="assets/ico-invest.png" alt="">
+          <div>
+            <h3>Montaža uključena</h3>
+            <p>Donesemo, montiramo i pokupimo ambalažu za sobom.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>

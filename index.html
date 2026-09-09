@@ -15,11 +15,11 @@
     --primary-dark:#07566f;
     --text:#1c242b;
     --muted:#5b6b76;
-    --bg:#f7fafc;
-    --card-bg:#ffffff;
-    --border:#dbe4ea;
-    --sq-line:rgba(10,110,144,0.07);
-    --sq-dot:rgba(10,110,144,0.13);
+    --bg:#faf6f0;
+    --card-bg:#fffdfa;
+    --border:#e8dfd3;
+    --tint:#f2ebe1;
+    --sq-line:rgba(122,96,64,0.13);
   }
 
   *{box-sizing:border-box;}
@@ -32,7 +32,7 @@
     background-image:
       linear-gradient(var(--sq-line) 1px, transparent 1px),
       linear-gradient(90deg, var(--sq-line) 1px, transparent 1px);
-    background-size:32px 32px;
+    background-size:48px 48px;
     font-size:16px;
     line-height:1.65;
     overflow-x:hidden;
@@ -70,12 +70,6 @@
   }
   @media (max-width:768px){
     .section{padding-top:56px;padding-bottom:56px;}
-  }
-
-  .section-alt{
-    background-color:var(--bg);
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect x='0' y='0' width='4' height='4' fill='%230a6e90' fill-opacity='0.13'/%3E%3C/svg%3E");
-    background-size:32px 32px;
   }
 
   .eyebrow{
@@ -211,7 +205,7 @@
   }
   .hero-grid{
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:1.62fr 1fr;
     gap:64px;
     align-items:center;
   }
@@ -219,11 +213,11 @@
     .hero-grid{grid-template-columns:1fr;gap:40px;}
   }
   .hero-copy h1{
-    font-size:64px;
+    font-size:72px;
     margin-bottom:24px;
   }
   @media (max-width:1100px){
-    .hero-copy h1{font-size:52px;}
+    .hero-copy h1{font-size:56px;}
   }
   @media (max-width:768px){
     .hero-copy h1{font-size:40px;}
@@ -254,7 +248,7 @@
     border-radius:50%;
     overflow:hidden;
     border:8px solid var(--card-bg);
-    background:#dbeaf3;
+    background:var(--tint);
   }
   .hero-circle img{
     width:100%;
@@ -338,7 +332,7 @@
     width:100%;
     height:200px;
     overflow:hidden;
-    background:#dbeaf3;
+    background:var(--tint);
   }
   .card-image img{
     width:100%;
@@ -376,7 +370,7 @@
   .placeholder-block{
     width:100%;
     min-height:280px;
-    background:#dbeaf3;
+    background:var(--tint);
     border:1px solid var(--border);
     border-radius:8px;
     display:flex;
@@ -472,6 +466,187 @@
   .step h3{font-size:18px;margin-bottom:8px;}
   .step p{color:var(--muted);font-size:15px;margin-bottom:0;}
 
+  /* UTISCI (karusel bez JS-a) */
+  .tst{position:relative;margin-top:48px;}
+  .tst-radio{position:absolute;width:1px;height:1px;opacity:0;}
+  .tst-viewport{overflow:hidden;border-radius:16px;}
+  .tst-track{
+    display:flex;
+    transition:transform 0.45s cubic-bezier(0.4,0,0.2,1);
+  }
+  .tst-slide{
+    flex:0 0 100%;
+    min-width:0;
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:40px;
+    align-items:start;
+    padding:56px;
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:16px;
+  }
+  @media (max-width:768px){
+    .tst-slide{grid-template-columns:1fr;gap:8px;padding:32px;}
+  }
+  .tst-mark{
+    font-family:'Instrument Serif', serif;
+    font-size:96px;
+    line-height:0.8;
+    color:var(--primary);
+    display:block;
+  }
+  .tst-quote{
+    font-family:'Instrument Serif', serif;
+    font-size:32px;
+    line-height:1.35;
+    color:var(--text);
+    margin-bottom:32px;
+  }
+  @media (max-width:768px){
+    .tst-quote{font-size:24px;}
+  }
+  .tst-person{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .tst-avatar{
+    width:56px;
+    height:56px;
+    flex:none;
+    border-radius:50%;
+    background:var(--tint);
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .tst-avatar span{
+    width:16px;
+    height:16px;
+    border-radius:4px;
+    background:var(--primary);
+    opacity:0.4;
+    display:block;
+  }
+  .tst-name{font-weight:600;font-size:16px;display:block;}
+  .tst-place{color:var(--muted);font-size:14px;}
+  .tst-stars{margin-left:auto;color:var(--primary);font-size:16px;letter-spacing:0.12em;}
+  @media (max-width:768px){
+    .tst-stars{margin-left:0;}
+    .tst-mark{font-size:72px;line-height:0.44;}
+  }
+
+  .tst-controls{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-top:32px;
+  }
+  .tst-nav{display:none;gap:12px;}
+  .tst-arrow{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    border:1px solid var(--border);
+    background:var(--card-bg);
+    color:var(--primary-ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    font-size:20px;
+    line-height:1;
+    user-select:none;
+  }
+  .tst-arrow:hover{background:var(--tint);}
+  .tst-dots{display:flex;gap:8px;}
+  .tst-dot{
+    width:12px;
+    height:12px;
+    border-radius:4px;
+    background:var(--border);
+    cursor:pointer;
+    display:block;
+    transition:width 0.3s ease, background 0.3s ease;
+  }
+  #tst-1:checked ~ .tst-viewport .tst-track{transform:translateX(0);}
+  #tst-2:checked ~ .tst-viewport .tst-track{transform:translateX(-100%);}
+  #tst-3:checked ~ .tst-viewport .tst-track{transform:translateX(-200%);}
+  #tst-1:checked ~ .tst-controls .tst-nav-1,
+  #tst-2:checked ~ .tst-controls .tst-nav-2,
+  #tst-3:checked ~ .tst-controls .tst-nav-3{display:flex;}
+  #tst-1:checked ~ .tst-controls .tst-dot-1,
+  #tst-2:checked ~ .tst-controls .tst-dot-2,
+  #tst-3:checked ~ .tst-controls .tst-dot-3{width:32px;background:var(--primary-ink);}
+  .tst-radio:focus-visible ~ .tst-controls .tst-dots{outline:2px solid var(--primary-ink);outline-offset:4px;}
+
+  /* CESTA PITANJA */
+  .faq-grid{
+    display:grid;
+    grid-template-columns:0.8fr 1.2fr;
+    gap:64px;
+    align-items:start;
+  }
+  @media (max-width:900px){
+    .faq-grid{grid-template-columns:1fr;gap:32px;}
+  }
+  .faq-head{position:sticky;top:112px;}
+  @media (max-width:900px){
+    .faq-head{position:static;}
+  }
+  .faq-head .lead{margin-bottom:24px;}
+  .faq-item{
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:var(--card-bg);
+    margin-bottom:16px;
+    overflow:hidden;
+  }
+  .faq-item:last-child{margin-bottom:0;}
+  .faq-item summary{
+    list-style:none;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    padding:24px;
+    font-weight:600;
+    font-size:16px;
+    line-height:1.5;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:"";
+    flex:none;
+    width:32px;
+    height:32px;
+    border-radius:8px;
+    background:var(--tint);
+    background-image:
+      linear-gradient(var(--primary-ink) 2px, transparent 2px),
+      linear-gradient(90deg, var(--primary-ink) 2px, transparent 2px);
+    background-size:12px 2px, 2px 12px;
+    background-position:center, center;
+    background-repeat:no-repeat, no-repeat;
+    transition:transform 0.3s ease, background-color 0.3s ease;
+  }
+  .faq-item[open] summary::after{
+    background-image:linear-gradient(90deg, #ffffff 2px, transparent 2px);
+    background-size:12px 2px;
+    background-color:var(--primary-ink);
+  }
+  .faq-item[open] summary{padding-bottom:8px;}
+  .faq-answer{
+    padding-left:24px;
+    padding-right:64px;
+    padding-bottom:24px;
+    color:var(--muted);
+    font-size:15px;
+  }
+  @media (max-width:768px){
+    .faq-answer{padding-right:24px;}
+  }
+  .faq-answer p:last-child{margin-bottom:0;}
+
   /* KONTAKT */
   .contact-grid{
     display:grid;
@@ -531,7 +706,7 @@
   .map-placeholder{
     margin-top:20px;
     min-height:200px;
-    background:#dbeaf3;
+    background:var(--tint);
     border:1px solid var(--border);
     border-radius:8px;
     display:flex;
@@ -554,13 +729,13 @@
     background:#102530;
     color:#c5d5de;
     padding-top:64px;
-    padding-bottom:0;
+    padding-bottom:0;/*ravnoteza je na .footer-grid*/
   }
   .footer-grid{
     display:grid;
     grid-template-columns:1.2fr 1fr 1fr;
     gap:48px;
-    padding-bottom:48px;
+    padding-bottom:64px;
   }
   @media (max-width:768px){
     .footer-grid{grid-template-columns:1fr;gap:36px;}
@@ -716,7 +891,7 @@
     </div>
   </section>
 
-  <section class="section section-alt" id="o-nama">
+  <section class="section" id="o-nama">
     <div class="wrap">
       <div class="about-grid">
         <div class="about-text">
@@ -783,7 +958,7 @@
     </div>
   </section>
 
-  <section class="section section-alt" id="kako-radimo">
+  <section class="section" id="kako-radimo">
     <div class="wrap">
       <span class="eyebrow">Proces</span>
       <h2>Kako radimo</h2>
@@ -804,6 +979,146 @@
           <img src="assets/ico-invest.png" alt="" class="step-icon">
           <h3>Isporučujemo i montiramo</h3>
           <p>Donesemo gotov nameštaj, montiramo ga kod vas i pokupimo ambalažu za sobom. Proverite sve pre nego što odemo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="utisci">
+    <div class="wrap">
+      <span class="eyebrow">Utisci</span>
+      <h2>Šta kažu klijenti</h2>
+      <p class="lead">Tri izjave ljudi kojima smo radili kuhinju, nadstrešnicu i plakare.</p>
+
+      <div class="tst">
+        <input type="radio" name="tst" id="tst-1" class="tst-radio" checked>
+        <input type="radio" name="tst" id="tst-2" class="tst-radio">
+        <input type="radio" name="tst" id="tst-3" class="tst-radio">
+
+        <div class="tst-viewport">
+          <div class="tst-track">
+            <article class="tst-slide">
+              <span class="tst-mark">&ldquo;</span>
+              <div>
+                <p class="tst-quote">OVDE IDE IZJAVA KLIJENTA - dve do tri rečenice o tome šta smo radili, kako je tekao dogovor i da li je rok ispoštovan.</p>
+                <div class="tst-person">
+                  <span class="tst-avatar"><span></span></span>
+                  <div>
+                    <strong class="tst-name">Ime i prezime</strong>
+                    <span class="tst-place">Naselje, Beograd</span>
+                  </div>
+                  <span class="tst-stars">★★★★★</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="tst-slide">
+              <span class="tst-mark">&ldquo;</span>
+              <div>
+                <p class="tst-quote">OVDE IDE DRUGA IZJAVA - najbolje iz poruke ili Google recenzije, u rečima kojima je klijent to stvarno napisao.</p>
+                <div class="tst-person">
+                  <span class="tst-avatar"><span></span></span>
+                  <div>
+                    <strong class="tst-name">Ime i prezime</strong>
+                    <span class="tst-place">Naselje, Beograd</span>
+                  </div>
+                  <span class="tst-stars">★★★★★</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="tst-slide">
+              <span class="tst-mark">&ldquo;</span>
+              <div>
+                <p class="tst-quote">OVDE IDE TREĆA IZJAVA - dobro je da se tri izjave odnose na tri različite usluge, da se vidi šta sve radite.</p>
+                <div class="tst-person">
+                  <span class="tst-avatar"><span></span></span>
+                  <div>
+                    <strong class="tst-name">Ime i prezime</strong>
+                    <span class="tst-place">Naselje, Beograd</span>
+                  </div>
+                  <span class="tst-stars">★★★★★</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="tst-controls">
+          <div class="tst-nav tst-nav-1">
+            <label for="tst-3" class="tst-arrow" aria-label="Prethodna izjava">&#8249;</label>
+            <label for="tst-2" class="tst-arrow" aria-label="Sledeća izjava">&#8250;</label>
+          </div>
+          <div class="tst-nav tst-nav-2">
+            <label for="tst-1" class="tst-arrow" aria-label="Prethodna izjava">&#8249;</label>
+            <label for="tst-3" class="tst-arrow" aria-label="Sledeća izjava">&#8250;</label>
+          </div>
+          <div class="tst-nav tst-nav-3">
+            <label for="tst-2" class="tst-arrow" aria-label="Prethodna izjava">&#8249;</label>
+            <label for="tst-1" class="tst-arrow" aria-label="Sledeća izjava">&#8250;</label>
+          </div>
+          <div class="tst-dots">
+            <label for="tst-1" class="tst-dot tst-dot-1" aria-label="Prva izjava"></label>
+            <label for="tst-2" class="tst-dot tst-dot-2" aria-label="Druga izjava"></label>
+            <label for="tst-3" class="tst-dot tst-dot-3" aria-label="Treća izjava"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pitanja">
+    <div class="wrap">
+      <div class="faq-grid">
+        <div class="faq-head">
+          <span class="eyebrow">Česta pitanja</span>
+          <h2>Pitanja koja najčešće dobijamo</h2>
+          <p class="lead">Ako ne nađete odgovor, pozovite nas - kažemo vam odmah, i kad je odgovor da ne radimo to.</p>
+          <a href="#kontakt" class="btn btn-primary">Pošaljite upit</a>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item" name="faq" open>
+            <summary>Da li dolazite da izmerite prostor?</summary>
+            <div class="faq-answer">
+              <p>Dolazimo. Izađemo kod vas, izmerimo prostor i pričamo o tome šta vam treba, pa tek onda pravimo nacrt. Bez merenja na licu mesta ne radimo nameštaj po meri.</p>
+            </div>
+          </details>
+
+          <details class="faq-item" name="faq">
+            <summary>Kada saznajem cenu i da li se ona menja?</summary>
+            <div class="faq-answer">
+              <p>Cenu kažemo unapred, pre nego što potpišete bilo šta. Uz nacrt dogovorimo i rok isporuke i avans, sve pismeno, da nema iznenađenja u toku posla.</p>
+            </div>
+          </details>
+
+          <details class="faq-item" name="faq">
+            <summary>Koje materijale koristite?</summary>
+            <div class="faq-answer">
+              <p>Masivno drvo (hrast, bukva, bor), ivericu sa furnirom, MDF i furnirane ploče, a gde treba nosivost kombinujemo drvo sa kovanim gvožđem i čelikom. Za kuhinju predložimo materijal koji podnosi vlagu i toplotu, za plakar u dečjoj sobi nešto drugo.</p>
+            </div>
+          </details>
+
+          <details class="faq-item" name="faq">
+            <summary>Da li montirate nameštaj i ko čisti posle?</summary>
+            <div class="faq-answer">
+              <p>Donesemo gotov nameštaj, montiramo ga kod vas i pokupimo ambalažu za sobom. Sve proverite pre nego što odemo.</p>
+            </div>
+          </details>
+
+          <details class="faq-item" name="faq">
+            <summary>Mogu li da donesem fotografiju kuhinje koja mi se sviđa?</summary>
+            <div class="faq-answer">
+              <p>Možete. Sednemo i pogledamo šta od toga stvarno stane u vaše kvadrate i vaš budžet. Nacrt pravimo na osnovu prostora, ne na osnovu slike.</p>
+            </div>
+          </details>
+
+          <details class="faq-item" name="faq">
+            <summary>Radite li i nešto osim nameštaja za stan?</summary>
+            <div class="faq-answer">
+              <p>Radimo. Osim kuhinja, plakara i soba, pravimo nadstrešnice, letnjikovce i vidikovce, nameštaj od paleta za terasu i baštu, kao i brvnare i montažne kuće.</p>
+            </div>
+          </details>
         </div>
       </div>
     </div>
@@ -889,7 +1204,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        © 2024 Stolarija Gavrilović. Sva prava zadržana.
+        © 2026 Stolarija Gavrilović. Sva prava zadržana.
       </div>
     </div>
   </footer>

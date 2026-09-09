@@ -313,49 +313,197 @@
     line-height:1.5;
   }
 
-  /* CARDS - USLUGE */
-  .cards-grid{
+  /* USLUGE - tabovi sa panelom */
+  .usl{position:relative;margin-top:48px;}
+  .usl-radio{position:absolute;width:1px;height:1px;opacity:0;}
+  .usl-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns:0.8fr 1.6fr;
     gap:32px;
-    margin-top:48px;
+    align-items:start;
   }
-  .card{
+  @media (max-width:900px){
+    .usl-grid{grid-template-columns:1fr;gap:24px;}
+  }
+
+  .usl-tabs{display:flex;flex-direction:column;gap:12px;}
+  .usl-tab{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:20px;
     border:1px solid var(--border);
-    border-radius:8px;
+    border-left:4px solid var(--border);
+    border-radius:12px;
+    background:var(--card-bg);
+    cursor:pointer;
+    transition:border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+  }
+  .usl-tab:hover{background:var(--tint);}
+  .usl-num{
+    font-family:'Instrument Serif', serif;
+    font-size:24px;
+    line-height:1;
+    color:var(--muted);
+    flex:none;
+    width:32px;
+  }
+  .usl-tab strong{
+    display:block;
+    font-size:16px;
+    line-height:1.4;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+  }
+  .usl-tab small{
+    display:block;
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.4;
+  }
+  .usl-tab-text{flex:1;min-width:0;}
+  .usl-arrow{
+    flex:none;
+    color:var(--primary-ink);
+    font-size:16px;
+    opacity:0;
+    transform:translateX(-8px);
+    transition:opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .usl-panel{display:none;}
+  .usl-card{
+    border:1px solid var(--border);
+    border-radius:16px;
     background:var(--card-bg);
     overflow:hidden;
-    display:flex;
-    flex-direction:column;
+    animation:usl-in 0.35s ease both;
   }
-  .card-image{
+  @keyframes usl-in{
+    from{opacity:0;transform:translateY(8px);}
+    to{opacity:1;transform:none;}
+  }
+  .usl-figure{position:relative;}
+  .usl-stripe{
+    height:8px;
+    background-image:repeating-linear-gradient(90deg, var(--primary) 0 12px, transparent 12px 24px);
+  }
+  .usl-figure img{
     width:100%;
-    height:200px;
-    overflow:hidden;
+    height:320px;
+    object-fit:cover;
     background:var(--tint);
   }
-  .card-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+  @media (max-width:768px){
+    .usl-figure img{height:200px;}
   }
-  .card-body{
-    padding:24px;
-    display:flex;
-    flex-direction:column;
-    flex:1;
-  }
-  .card-body h3{font-size:20px;margin-bottom:10px;}
-  .card-body p{color:var(--muted);font-size:15px;flex:1;}
-  .card-link{
-    margin-top:12px;
-    font-family:'Space Grotesk', sans-serif;
+  .usl-badge{
+    position:absolute;
+    top:24px;
+    right:24px;
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:8px 16px;
+    font-size:12px;
     font-weight:600;
-    font-size:14px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
     color:var(--primary-ink);
-    text-decoration:none;
   }
-  .card-link:hover{text-decoration:underline;}
+  .usl-body{padding:32px;}
+  @media (max-width:768px){
+    .usl-body{padding:24px;}
+  }
+  .usl-body h3{font-size:32px;margin-bottom:16px;}
+  .usl-body > p{color:var(--muted);margin-bottom:24px;}
+  .usl-points{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px 32px;
+    list-style:none;
+    margin:0 0 24px 0;
+    padding:0;
+  }
+  @media (max-width:768px){
+    .usl-points{grid-template-columns:1fr;}
+  }
+  .usl-points li{
+    position:relative;
+    padding-left:32px;
+    font-size:15px;
+    line-height:1.5;
+  }
+  .usl-points li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:4px;
+    width:16px;
+    height:16px;
+    border-radius:4px;
+    background:var(--primary);
+    opacity:0.28;
+  }
+  .usl-points li::after{
+    content:"";
+    position:absolute;
+    left:5px;
+    top:8px;
+    width:5px;
+    height:9px;
+    border-right:2px solid var(--primary-ink);
+    border-bottom:2px solid var(--primary-ink);
+    transform:rotate(45deg);
+  }
+  .usl-meta{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:8px;
+    padding-top:24px;
+    border-top:1px solid var(--border);
+    margin-bottom:24px;
+  }
+  .usl-meta-label{
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-right:8px;
+  }
+  .usl-chip{
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:8px 16px;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+  }
+
+  #usl-1:checked ~ .usl-grid .usl-panel-1,
+  #usl-2:checked ~ .usl-grid .usl-panel-2,
+  #usl-3:checked ~ .usl-grid .usl-panel-3,
+  #usl-4:checked ~ .usl-grid .usl-panel-4{display:block;}
+  #usl-1:checked ~ .usl-grid .usl-tab-1,
+  #usl-2:checked ~ .usl-grid .usl-tab-2,
+  #usl-3:checked ~ .usl-grid .usl-tab-3,
+  #usl-4:checked ~ .usl-grid .usl-tab-4{
+    border-color:var(--border);
+    border-left-color:var(--primary-ink);
+    background:var(--tint);
+  }
+  #usl-1:checked ~ .usl-grid .usl-tab-1 .usl-num,
+  #usl-2:checked ~ .usl-grid .usl-tab-2 .usl-num,
+  #usl-3:checked ~ .usl-grid .usl-tab-3 .usl-num,
+  #usl-4:checked ~ .usl-grid .usl-tab-4 .usl-num{color:var(--primary-ink);}
+  #usl-1:checked ~ .usl-grid .usl-tab-1 .usl-arrow,
+  #usl-2:checked ~ .usl-grid .usl-tab-2 .usl-arrow,
+  #usl-3:checked ~ .usl-grid .usl-tab-3 .usl-arrow,
+  #usl-4:checked ~ .usl-grid .usl-tab-4 .usl-arrow{opacity:1;transform:none;}
+  .usl-radio:focus-visible ~ .usl-grid .usl-tabs{outline:2px solid var(--primary-ink);outline-offset:4px;}
 
   /* O NAMA */
   .about-grid{
@@ -841,50 +989,154 @@
     <div class="wrap">
       <span class="eyebrow">Usluge</span>
       <h2>Šta radimo</h2>
-      <p class="lead">Od kuhinje do nadstrešnice u dvorištu - sve pravimo po meri, ne po katalogu.</p>
+      <p class="lead">Od kuhinje do nadstrešnice u dvorištu - sve pravimo po meri, ne po katalogu. Izaberite uslugu da vidite šta tačno pokriva.</p>
 
-      <div class="cards-grid">
-        <div class="card">
-          <div class="card-image">
-            <img src="assets/namestaj-po-meri-stolarija-gavrilovi-.png" alt="Kuhinja po meri sa tamnim elementima i belom radnom pločom">
-          </div>
-          <div class="card-body">
-            <h3>Nameštaj po meri</h3>
-            <p>Kuhinje, dnevne i spavaće sobe, dečje sobe, kupatila, predsoblja i nameštaj za kancelarije i lokale. Merimo prostor kod vas i pravimo nacrt pre nego što isečemo prvu ploču.</p>
-            <a href="#kontakt" class="card-link">Pošaljite upit za ovo</a>
-          </div>
-        </div>
+      <div class="usl">
+        <input type="radio" name="usl" id="usl-1" class="usl-radio" checked>
+        <input type="radio" name="usl" id="usl-2" class="usl-radio">
+        <input type="radio" name="usl" id="usl-3" class="usl-radio">
+        <input type="radio" name="usl" id="usl-4" class="usl-radio">
 
-        <div class="card">
-          <div class="card-image">
-            <img src="assets/nadstresnice-letnjikovci-vidikovci-stolarija-gavrilovi-.png" alt="Drvena nadstrešnica sa sedištem u dvorištu, obložena šindrom">
+        <div class="usl-grid">
+          <div class="usl-tabs">
+          <label for="usl-1" class="usl-tab usl-tab-1">
+            <span class="usl-num">01</span>
+            <span class="usl-tab-text">
+              <strong>Nameštaj po meri</strong>
+              <small>Kuhinje, plakari, sobe</small>
+            </span>
+            <span class="usl-arrow">&#8594;</span>
+          </label>
+          <label for="usl-2" class="usl-tab usl-tab-2">
+            <span class="usl-num">02</span>
+            <span class="usl-tab-text">
+              <strong>Nadstrešnice i letnjikovci</strong>
+              <small>Terase, vidikovci, krov</small>
+            </span>
+            <span class="usl-arrow">&#8594;</span>
+          </label>
+          <label for="usl-3" class="usl-tab usl-tab-3">
+            <span class="usl-num">03</span>
+            <span class="usl-tab-text">
+              <strong>Nameštaj od paleta</strong>
+              <small>Sto, klupa, garnitura</small>
+            </span>
+            <span class="usl-arrow">&#8594;</span>
+          </label>
+          <label for="usl-4" class="usl-tab usl-tab-4">
+            <span class="usl-num">04</span>
+            <span class="usl-tab-text">
+              <strong>Brvnare i montažne kuće</strong>
+              <small>Konstrukcija, oblaganje, terasa</small>
+            </span>
+            <span class="usl-arrow">&#8594;</span>
+          </label>
           </div>
-          <div class="card-body">
-            <h3>Nadstrešnice i letnjikovci</h3>
-            <p>Nadstrešnice za terase, letnjikovci i vidikovci od drveta, rađeni da izdrže kišu i sneg. Dodajemo krov, stubove i osvetljenje po dogovoru.</p>
-            <a href="#kontakt" class="card-link">Pošaljite upit za ovo</a>
-          </div>
-        </div>
 
-        <div class="card">
-          <div class="card-image">
-            <img src="assets/namestaj-od-paleta-stolarija-gavrilovi-.png" alt="Baštenski set od paleta - ugaona garnitura i sto, obojeno u belo">
+          <div class="usl-panels">
+          <div class="usl-panel usl-panel-1">
+            <article class="usl-card">
+              <div class="usl-figure">
+                <div class="usl-stripe"></div>
+                <img src="assets/namestaj-po-meri-stolarija-gavrilovi-.png" alt="Kuhinja po meri sa tamnim elementima i belom radnom pločom">
+                <span class="usl-badge">Usluga 01 / 04</span>
+              </div>
+              <div class="usl-body">
+                <h3>Nameštaj po meri</h3>
+                <p>Kuhinje, dnevne i spavaće sobe, dečje sobe, kupatila, predsoblja i nameštaj za kancelarije i lokale. Merimo prostor kod vas i pravimo nacrt pre nego što isečemo prvu ploču.</p>
+                <ul class="usl-points">
+                  <li>Kuhinje i radne ploče</li>
+                  <li>Plakari i predsoblja</li>
+                  <li>Dečje i spavaće sobe</li>
+                  <li>Nameštaj za lokale i kancelarije</li>
+                </ul>
+                <div class="usl-meta">
+                  <span class="usl-meta-label">Materijali</span>
+                  <span class="usl-chip">Masivno drvo</span>
+                  <span class="usl-chip">Iverica sa furnirom</span>
+                  <span class="usl-chip">MDF</span>
+                  <span class="usl-chip">Furnirane ploče</span>
+                </div>
+                <a href="#kontakt" class="btn btn-primary">Pošaljite upit za ovu uslugu</a>
+              </div>
+            </article>
           </div>
-          <div class="card-body">
-            <h3>Nameštaj od paleta</h3>
-            <p>Sto, klupa ili ceo ugaoni set od paleta, brušen i lakiran da izdrži spolja. Dobro rešenje za terasu ili baštu kad ne treba ceo budžet za nameštaj.</p>
-            <a href="#kontakt" class="card-link">Pošaljite upit za ovo</a>
+          <div class="usl-panel usl-panel-2">
+            <article class="usl-card">
+              <div class="usl-figure">
+                <div class="usl-stripe"></div>
+                <img src="assets/nadstresnice-letnjikovci-vidikovci-stolarija-gavrilovi-.png" alt="Drvena nadstrešnica sa sedištem u dvorištu, obložena šindrom">
+                <span class="usl-badge">Usluga 02 / 04</span>
+              </div>
+              <div class="usl-body">
+                <h3>Nadstrešnice i letnjikovci</h3>
+                <p>Nadstrešnice za terase, letnjikovci i vidikovci od drveta, rađeni da izdrže kišu i sneg. Dodajemo krov, stubove i osvetljenje po dogovoru.</p>
+                <ul class="usl-points">
+                  <li>Nadstrešnice za terase</li>
+                  <li>Letnjikovci i vidikovci</li>
+                  <li>Krov, stubovi i ograda</li>
+                  <li>Osvetljenje po dogovoru</li>
+                </ul>
+                <div class="usl-meta">
+                  <span class="usl-meta-label">Materijali</span>
+                  <span class="usl-chip">Masivno drvo</span>
+                  <span class="usl-chip">Kovano gvožđe</span>
+                  <span class="usl-chip">Čelik</span>
+                </div>
+                <a href="#kontakt" class="btn btn-primary">Pošaljite upit za ovu uslugu</a>
+              </div>
+            </article>
           </div>
-        </div>
-
-        <div class="card">
-          <div class="card-image">
-            <img src="assets/brvnare-montazne-kuce.png" alt="Drvena brvnara sa natkrivenim tremom i ogradom">
+          <div class="usl-panel usl-panel-3">
+            <article class="usl-card">
+              <div class="usl-figure">
+                <div class="usl-stripe"></div>
+                <img src="assets/namestaj-od-paleta-stolarija-gavrilovi-.png" alt="Baštenski set od paleta - ugaona garnitura i sto, obojeno u belo">
+                <span class="usl-badge">Usluga 03 / 04</span>
+              </div>
+              <div class="usl-body">
+                <h3>Nameštaj od paleta</h3>
+                <p>Sto, klupa ili ceo ugaoni set od paleta, brušen i lakiran da izdrži spolja. Dobro rešenje za terasu ili baštu kad ne treba ceo budžet za nameštaj.</p>
+                <ul class="usl-points">
+                  <li>Stolovi i klupe</li>
+                  <li>Ugaone garniture</li>
+                  <li>Brušenje i lakiranje</li>
+                  <li>Izrada za spoljnu upotrebu</li>
+                </ul>
+                <div class="usl-meta">
+                  <span class="usl-meta-label">Materijali</span>
+                  <span class="usl-chip">Palete</span>
+                  <span class="usl-chip">Lak za spolja</span>
+                </div>
+                <a href="#kontakt" class="btn btn-primary">Pošaljite upit za ovu uslugu</a>
+              </div>
+            </article>
           </div>
-          <div class="card-body">
-            <h3>Brvnare i montažne kuće</h3>
-            <p>Brvnare i montažne kuće od drveta, za vikendicu, gostinsku kućicu u dvorištu ili stalno stanovanje. Radimo konstrukciju, oblaganje i terasu.</p>
-            <a href="#kontakt" class="card-link">Pošaljite upit za ovo</a>
+          <div class="usl-panel usl-panel-4">
+            <article class="usl-card">
+              <div class="usl-figure">
+                <div class="usl-stripe"></div>
+                <img src="assets/brvnare-montazne-kuce.png" alt="Drvena brvnara sa natkrivenim tremom i ogradom">
+                <span class="usl-badge">Usluga 04 / 04</span>
+              </div>
+              <div class="usl-body">
+                <h3>Brvnare i montažne kuće</h3>
+                <p>Brvnare i montažne kuće od drveta, za vikendicu, gostinsku kućicu u dvorištu ili stalno stanovanje. Radimo konstrukciju, oblaganje i terasu.</p>
+                <ul class="usl-points">
+                  <li>Nosiva konstrukcija</li>
+                  <li>Oblaganje drvetom</li>
+                  <li>Terasa i trem</li>
+                  <li>Vikendica ili stalno stanovanje</li>
+                </ul>
+                <div class="usl-meta">
+                  <span class="usl-meta-label">Materijali</span>
+                  <span class="usl-chip">Masivno drvo</span>
+                  <span class="usl-chip">Čelik</span>
+                </div>
+                <a href="#kontakt" class="btn btn-primary">Pošaljite upit za ovu uslugu</a>
+              </div>
+            </article>
+          </div>
           </div>
         </div>
       </div>

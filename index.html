@@ -537,6 +537,37 @@
   }
   .about-text p{color:var(--muted);}
   .about-text p:first-of-type{color:var(--text);}
+  .about-stats{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:12px;
+    margin-top:16px;
+  }
+  .about-stat{
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding-top:16px;
+    padding-bottom:16px;
+    padding-left:12px;
+    padding-right:12px;
+    text-align:center;
+  }
+  .about-stat strong{
+    display:block;
+    font-family:'Instrument Serif', serif;
+    font-weight:400;
+    font-size:24px;
+    line-height:1.2;
+    color:var(--primary-ink);
+  }
+  .about-stat span{
+    display:block;
+    margin-top:4px;
+    font-size:12px;
+    line-height:1.4;
+    color:var(--muted);
+  }
 
   /* MATERIJALI */
   .materials-grid{
@@ -590,29 +621,83 @@
   }
 
   /* KAKO RADIMO */
-  .steps-grid{
+  .proces-grid{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:40px;
-    margin-top:48px;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:64px;
+    align-items:start;
   }
   @media (max-width:900px){
-    .steps-grid{grid-template-columns:1fr;}
+    .proces-grid{grid-template-columns:1fr;gap:40px;}
   }
-  .step{
-    text-align:left;
-    border:1px solid var(--border);
-    border-radius:8px;
-    padding:28px;
+  .proces-title{
+    font-size:56px;
+    margin-bottom:32px;
+  }
+  .proces-title .proces-hl{
+    display:block;
+    color:var(--primary-ink);
+  }
+  @media (max-width:768px){
+    .proces-title{font-size:36px;margin-bottom:24px;}
+  }
+  .proces-sub{
+    font-size:18px;
+    margin-bottom:8px;
+  }
+  .proces-intro p{
+    color:var(--muted);
+    font-size:15px;
+    margin-bottom:12px;
+  }
+  .proces-intro p:last-child{margin-bottom:0;}
+  .proces-list{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .proces-item{
+    display:flex;
+    align-items:flex-start;
+    gap:24px;
+    padding-top:20px;
+    padding-bottom:20px;
+    padding-left:20px;
+    padding-right:20px;
+    border:1px solid transparent;
+    border-radius:12px;
+  }
+  .proces-badge{
+    flex:0 0 auto;
+    width:64px;
+    height:64px;
+    border-radius:50%;
     background:var(--card-bg);
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
   }
-  .step-icon{
-    width:44px;
-    height:44px;
-    margin-bottom:18px;
+  .proces-badge img{
+    width:28px;
+    height:28px;
   }
-  .step h3{font-size:18px;margin-bottom:8px;}
-  .step p{color:var(--muted);font-size:15px;margin-bottom:0;}
+  .proces-item h3{font-size:18px;margin-bottom:4px;}
+  .proces-item p{color:var(--muted);font-size:15px;margin-bottom:0;}
+  .proces-item.is-active{
+    background:var(--card-bg);
+    border-color:var(--border);
+  }
+  .proces-item.is-active .proces-badge{
+    background:var(--primary-ink);
+    border-color:var(--primary-ink);
+  }
+  .proces-item.is-active .proces-badge img{filter:brightness(0) invert(1);}
+  .proces-item.is-active h3{color:var(--primary-ink);}
+  @media (max-width:768px){
+    .proces-item{gap:16px;padding-left:16px;padding-right:16px;}
+    .proces-badge{width:56px;height:56px;}
+  }
 
   /* UTISCI (karusel bez JS-a) */
   .tst{position:relative;margin-top:48px;}
@@ -1153,8 +1238,24 @@
           <p>Radimo sa masivnim drvetom, iverom, MDF-om i furniranim pločama. Za kuhinju predložimo materijal koji podnosi vlagu i toplotu, za plakar u dečjoj sobi nešto drugo.</p>
           <p>Kad nam neko donese fotografiju kuhinje iz časopisa, sednemo i pogledamo šta od toga stvarno stane u te kvadrate i taj budžet. Nacrt pravimo na osnovu prostora, ne na osnovu slike.</p>
         </div>
-        <div class="placeholder-block" role="img" aria-label="Fotografija radionice Stolarije Gavrilović">
-          FOTOGRAFIJA RADIONICE
+        <div class="about-media">
+          <div class="placeholder-block" role="img" aria-label="Fotografija radionice Stolarije Gavrilović">
+            FOTOGRAFIJA RADIONICE
+          </div>
+          <div class="about-stats">
+            <div class="about-stat">
+              <strong>3</strong>
+              <span>koraka od merenja do montaže</span>
+            </div>
+            <div class="about-stat">
+              <strong>0 din</strong>
+              <span>izlazak na teren i procena</span>
+            </div>
+            <div class="about-stat">
+              <strong>Isti dan</strong>
+              <span>odgovor na poziv i poruku</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1212,25 +1313,37 @@
 
   <section class="section" id="kako-radimo">
     <div class="wrap">
-      <span class="eyebrow">Proces</span>
-      <h2>Kako radimo</h2>
-      <p class="lead">Tri koraka, bez iznenađenja u ceni i bez čekanja da saznate kad stiže vaš nameštaj.</p>
+      <div class="proces-grid">
+        <div class="proces-intro">
+          <span class="eyebrow">Proces</span>
+          <h2 class="proces-title"><span class="proces-hl">Kako</span>radimo</h2>
+          <h3 class="proces-sub">Od poziva do montaže</h3>
+          <p>Tri koraka, bez iznenađenja u ceni i bez čekanja da saznate kad stiže vaš nameštaj.</p>
+          <p>U svakom koraku znate ko dolazi, šta se radi i koliko to košta. Ako nešto ne može da se izvede kako ste zamislili, kažemo vam odmah, a ne na dan montaže.</p>
+        </div>
 
-      <div class="steps-grid">
-        <div class="step">
-          <img src="assets/ico-money.png" alt="" class="step-icon">
-          <h3>Merimo i dogovaramo cenu</h3>
-          <p>Dolazimo kod vas, merimo prostor i pričamo o tome šta vam treba. Cenu kažemo unapred, pre nego što potpišete bilo šta.</p>
-        </div>
-        <div class="step">
-          <img src="assets/ico-bank.png" alt="" class="step-icon">
-          <h3>Pravimo nacrt i ugovor</h3>
-          <p>Nacrtamo tačno kako će nameštaj da izgleda i stane u prostor. Dogovorimo rok isporuke i avans, sve pismeno.</p>
-        </div>
-        <div class="step">
-          <img src="assets/ico-invest.png" alt="" class="step-icon">
-          <h3>Isporučujemo i montiramo</h3>
-          <p>Donesemo gotov nameštaj, montiramo ga kod vas i pokupimo ambalažu za sobom. Proverite sve pre nego što odemo.</p>
+        <div class="proces-list">
+          <div class="proces-item is-active">
+            <div class="proces-badge"><img src="assets/ico-money.png" alt=""></div>
+            <div class="proces-item-body">
+              <h3>Merimo i dogovaramo cenu</h3>
+              <p>Dolazimo kod vas, merimo prostor i pričamo o tome šta vam treba. Cenu kažemo unapred, pre nego što potpišete bilo šta.</p>
+            </div>
+          </div>
+          <div class="proces-item">
+            <div class="proces-badge"><img src="assets/ico-bank.png" alt=""></div>
+            <div class="proces-item-body">
+              <h3>Pravimo nacrt i ugovor</h3>
+              <p>Nacrtamo tačno kako će nameštaj da izgleda i stane u prostor. Dogovorimo rok isporuke i avans, sve pismeno.</p>
+            </div>
+          </div>
+          <div class="proces-item">
+            <div class="proces-badge"><img src="assets/ico-invest.png" alt=""></div>
+            <div class="proces-item-body">
+              <h3>Isporučujemo i montiramo</h3>
+              <p>Donesemo gotov nameštaj, montiramo ga kod vas i pokupimo ambalažu za sobom. Proverite sve pre nego što odemo.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
